@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let homeController = ViewController()
+        let homeController = SignIn()
         window?.rootViewController = UINavigationController(rootViewController: homeController)
         
         // Override point for customization after application launch.

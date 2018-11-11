@@ -8,12 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		B55135ED219828CD00205209 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55135EC219828CD00205209 /* AppDelegate.swift */; };
-		B55135EF219828CD00205209 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55135EE219828CD00205209 /* ViewController.swift */; };
-		B55135F4219828CE00205209 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B55135F3219828CE00205209 /* Assets.xcassets */; };
+		B55135EF219828CD00205209 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55135EE219828CD00205209 /* SignIn.swift */; };
 		B55135F7219828CE00205209 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B55135F5219828CE00205209 /* LaunchScreen.storyboard */; };
 		B5513602219828CF00205209 /* InstargramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5513601219828CF00205209 /* InstargramTests.swift */; };
 		B551360D219828CF00205209 /* InstargramUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551360C219828CF00205209 /* InstargramUITests.swift */; };
 		B551361B21983FDE00205209 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551361A21983FDE00205209 /* Extension.swift */; };
+		B551361D21984DAC00205209 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551361C21984DAC00205209 /* SignUp.swift */; };
+		B551361F21985CBA00205209 /* TabSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551361E21985CBA00205209 /* TabSwitcher.swift */; };
+		B5513621219863B700205209 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5513620219863B700205209 /* Assets.xcassets */; };
+		B55136242198712900205209 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55136232198712900205209 /* Home.swift */; };
+		B55136262198713A00205209 /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55136252198713A00205209 /* Discover.swift */; };
+		B55136282198714500205209 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55136272198714500205209 /* Photos.swift */; };
+		B551362A2198715300205209 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55136292198715300205209 /* Notification.swift */; };
+		B551362C2198715B00205209 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551362B2198715B00205209 /* Profile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +43,7 @@
 /* Begin PBXFileReference section */
 		B55135E9219828CD00205209 /* Instargram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instargram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55135EC219828CD00205209 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B55135EE219828CD00205209 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B55135F3219828CE00205209 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B55135EE219828CD00205209 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		B55135F6219828CE00205209 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B55135F8219828CE00205209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B55135FD219828CF00205209 /* InstargramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstargramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +53,14 @@
 		B551360C219828CF00205209 /* InstargramUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstargramUITests.swift; sourceTree = "<group>"; };
 		B551360E219828CF00205209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B551361A21983FDE00205209 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		B551361C21984DAC00205209 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		B551361E21985CBA00205209 /* TabSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSwitcher.swift; sourceTree = "<group>"; };
+		B5513620219863B700205209 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
+		B55136232198712900205209 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		B55136252198713A00205209 /* Discover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discover.swift; sourceTree = "<group>"; };
+		B55136272198714500205209 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
+		B55136292198715300205209 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		B551362B2198715B00205209 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +112,14 @@
 			isa = PBXGroup;
 			children = (
 				B55135EC219828CD00205209 /* AppDelegate.swift */,
-				B55135EE219828CD00205209 /* ViewController.swift */,
-				B55135F3219828CE00205209 /* Assets.xcassets */,
+				B55135EE219828CD00205209 /* SignIn.swift */,
+				B55136222198711400205209 /* Pages */,
+				B551361C21984DAC00205209 /* SignUp.swift */,
+				B551361E21985CBA00205209 /* TabSwitcher.swift */,
 				B55135F5219828CE00205209 /* LaunchScreen.storyboard */,
 				B55135F8219828CE00205209 /* Info.plist */,
 				B551361A21983FDE00205209 /* Extension.swift */,
+				B5513620219863B700205209 /* Assets.xcassets */,
 			);
 			path = Instargram;
 			sourceTree = "<group>";
@@ -123,6 +140,18 @@
 				B551360E219828CF00205209 /* Info.plist */,
 			);
 			path = InstargramUITests;
+			sourceTree = "<group>";
+		};
+		B55136222198711400205209 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				B55136232198712900205209 /* Home.swift */,
+				B55136252198713A00205209 /* Discover.swift */,
+				B55136272198714500205209 /* Photos.swift */,
+				B55136292198715300205209 /* Notification.swift */,
+				B551362B2198715B00205209 /* Profile.swift */,
+			);
+			path = Pages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,8 +258,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5513621219863B700205209 /* Assets.xcassets in Resources */,
 				B55135F7219828CE00205209 /* LaunchScreen.storyboard in Resources */,
-				B55135F4219828CE00205209 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,8 +285,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B551361B21983FDE00205209 /* Extension.swift in Sources */,
-				B55135EF219828CD00205209 /* ViewController.swift in Sources */,
+				B551362C2198715B00205209 /* Profile.swift in Sources */,
+				B551361D21984DAC00205209 /* SignUp.swift in Sources */,
+				B551362A2198715300205209 /* Notification.swift in Sources */,
+				B55135EF219828CD00205209 /* SignIn.swift in Sources */,
+				B551361F21985CBA00205209 /* TabSwitcher.swift in Sources */,
+				B55136282198714500205209 /* Photos.swift in Sources */,
+				B55136242198712900205209 /* Home.swift in Sources */,
 				B55135ED219828CD00205209 /* AppDelegate.swift in Sources */,
+				B55136262198713A00205209 /* Discover.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

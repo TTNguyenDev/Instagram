@@ -27,8 +27,8 @@ class TabSwitcher: UIViewController, UITabBarControllerDelegate {
     
     let photos: Photos = {
         let photos = Photos()
-        photos.tabBarItem.image = #imageLiteral(resourceName: "icons8-instagram-old-24")
-        photos.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
+        photos.tabBarItem.image = #imageLiteral(resourceName: "icons8-instagram-old-50")
+        photos.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         return photos
     }()
     
@@ -41,7 +41,7 @@ class TabSwitcher: UIViewController, UITabBarControllerDelegate {
     
     let account: Profile = {
         let account = Profile()
-        account.tabBarItem.image = #imageLiteral(resourceName: "icons8-account-24")
+        account.tabBarItem.image = #imageLiteral(resourceName: "icons8-user-24")
         account.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
         return account
     }()

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let homeController = SignIn()
         window?.rootViewController = UINavigationController(rootViewController: homeController)
         
+        FirebaseApp.configure()
         // Override point for customization after application launch.
         return true
     }

@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
 
 class SignUp: UIViewController {
     
+    var selectedImage: UIImage?
+    
     let ProfileImageName: UIImageView = {
         let image = UIImageView()
-        image.image = #imageLiteral(resourceName: "1457604267")
+        image.image = #imageLiteral(resourceName: "icons8-user-male-480")
         image.contentMode = .scaleToFill
         image.layer.cornerRadius = 40
         image.clipsToBounds = true
@@ -24,6 +29,7 @@ class SignUp: UIViewController {
         textField.placeholder = "  Name"
         textField.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
         textField.layer.cornerRadius = 9
+        textField.autocapitalizationType = .none
         textField.clipsToBounds = true
         return textField
     }()
@@ -32,6 +38,7 @@ class SignUp: UIViewController {
         let textField = UITextField()
         textField.placeholder = "  Email"
         textField.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+        textField.autocapitalizationType = .none
         textField.layer.cornerRadius = 9
         textField.clipsToBounds = true
         return textField
@@ -42,6 +49,7 @@ class SignUp: UIViewController {
         textField.placeholder = "  Password"
         textField.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
         textField.layer.cornerRadius = 9
+        textField.autocapitalizationType = .none
         textField.clipsToBounds = true
         textField.isSecureTextEntry = true
         return textField
@@ -68,8 +76,53 @@ class SignUp: UIViewController {
     }()
     
     
+    fileprivate func saveDataBase() {
+        let uid = Auth.auth().currentUser?.uid
+        
+        //Upload Profile image
+        let storageRef = Storage.storage().reference(forURL: "gs://instagramclone-d44f3.appspot.com").child("profile_image").child(uid!)
+        
+        let metaDataForImage = StorageMetadata()
+        metaDataForImage.contentType = "image/jpeg"
+        
+        if let profileImg = self.selectedImage {
+            storageRef.putData(profileImg.jpegData(compressionQuality: 0.1)!, metadata: metaDataForImage) { (metaData, error) in
+                if error != nil {
+                    return
+                }
+                
+                _ = storageRef.downloadURL(completion: { (url, error) in
+                    if error != nil {
+                        return
+                    }
+                    let profileImageUrl = url?.absoluteString
+                    let ref = Database.database().reference()
+                    let userReference = ref.child("users")
+                    
+                    let newUserReference = userReference.child(uid!)
+                    newUserReference.setValue(["username": self.UserName.text!, "email": self.Email.text!, "profile_image": profileImageUrl])
+                })
+            }
+        }
+    }
+    
+    @objc fileprivate func chooseProfileImage() {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        present(pickerController, animated: true, completion: nil)
+    }
+    
     
     @objc fileprivate func signUpHandle() {
+        Auth.auth().createUser(withEmail: Email.text!, password: Password.text!) { (user, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+                return
+            }
+            self.saveDataBase()
+        }
+        
+        
         let vc = TabSwitcher()
         present(vc, animated: true, completion: nil)
     }
@@ -93,6 +146,11 @@ class SignUp: UIViewController {
         
         Email.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20).isActive = true
         ProfileImageName.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(chooseProfileImage))
+        ProfileImageName.addGestureRecognizer(tapGesture)
+        ProfileImageName.isUserInteractionEnabled = true
+        
     }
     
     override func viewDidLoad() {
@@ -101,7 +159,9 @@ class SignUp: UIViewController {
         
         navigationController?.navigationBar.isHidden = true
         
+       
         SetupViews()
+        
         
         
         
@@ -111,3 +171,14 @@ class SignUp: UIViewController {
     
 }
 
+extension SignUp: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.originalImage] as? UIImage {
+            selectedImage = image
+            ProfileImageName.image = image
+        }
+        dismiss(animated: true, completion: nil)
+        
+    }
+}

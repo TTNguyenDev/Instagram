@@ -61,7 +61,8 @@ class SignUp: UIViewController {
         button.clipsToBounds = true
         button.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
         button.setTitle("Sign Up", for: .normal)
-        button.setTitleColor(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1), for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1), for: .normal)
+        button.isEnabled = false
         button.addTarget(self, action: #selector(signUpHandle), for: .touchUpInside)
         return button
     }()
@@ -112,7 +113,6 @@ class SignUp: UIViewController {
         present(pickerController, animated: true, completion: nil)
     }
     
-    
     @objc fileprivate func signUpHandle() {
         Auth.auth().createUser(withEmail: Email.text!, password: Password.text!) { (user, error) in
             if error != nil {
@@ -121,10 +121,23 @@ class SignUp: UIViewController {
             }
             self.saveDataBase()
         }
-        
-        
         let vc = TabSwitcher()
         present(vc, animated: true, completion: nil)
+    }
+    
+    @objc fileprivate func handleTextFieldDidChanged() {
+        guard let username = UserName.text, !username.isEmpty, let email = Email.text, !email.isEmpty, let password = Password.text, !password.isEmpty else {
+            SignUpButton.isEnabled = false
+            return
+        }
+        SignUpButton.setTitleColor(#colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1), for: .normal)
+        SignUpButton.isEnabled = true
+    }
+    
+    fileprivate func handleTextField() {
+        UserName.addTarget(self, action: #selector(handleTextFieldDidChanged), for: .editingChanged)
+        Email.addTarget(self, action: #selector(handleTextFieldDidChanged), for: .editingChanged)
+        Password.addTarget(self, action: #selector(handleTextFieldDidChanged), for: .editingChanged)
     }
     
     fileprivate func SetupViews() {
@@ -150,29 +163,19 @@ class SignUp: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(chooseProfileImage))
         ProfileImageName.addGestureRecognizer(tapGesture)
         ProfileImageName.isUserInteractionEnabled = true
-        
+        handleTextField()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "blur-wallpapers-55342-6592718"))
-        
         navigationController?.navigationBar.isHidden = true
-        
-       
         SetupViews()
-        
-        
-        
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
-    
-    
 }
 
 extension SignUp: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-  
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
             selectedImage = image

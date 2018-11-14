@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignIn: UIViewController {
     
@@ -15,6 +16,7 @@ class SignIn: UIViewController {
         textField.placeholder = "  Email"
         textField.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
         textField.layer.cornerRadius = 9
+        textField.autocapitalizationType = .none
         textField.clipsToBounds = true
         return textField
     }()
@@ -25,6 +27,7 @@ class SignIn: UIViewController {
         textField.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
         textField.layer.cornerRadius = 9
         textField.clipsToBounds = true
+        textField.autocapitalizationType = .none
         textField.isSecureTextEntry = true
         return textField
     }()
@@ -64,12 +67,30 @@ class SignIn: UIViewController {
     }
     
     @objc fileprivate func signInHandle() {
-        let vc = TabSwitcher()
-        present(vc, animated: true, completion: nil)
+        Auth.auth().signIn(withEmail: Email.text!, password: Password.text!) { (user, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+                self.alertMessage(name: "Login Failed.")
+                return
+            }
+            let vc = TabSwitcher()
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
+    @objc fileprivate func handleTextFieldDidChanged() {
+        guard let email = Email.text, !email.isEmpty, let password = Password.text, !password.isEmpty else {
+            SignInButton.isEnabled = false
+            return
+        }
+        SignInButton.setTitleColor(#colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1), for: .normal)
+        SignInButton.isEnabled = true
+    }
     
-    
+    fileprivate func handleTextField() {
+        Email.addTarget(self, action: #selector(handleTextFieldDidChanged), for: .editingChanged)
+        Password.addTarget(self, action: #selector(handleTextFieldDidChanged), for: .editingChanged)
+    }
     
     fileprivate func SetupViews() {
         view.addSubview(Email)
@@ -87,21 +108,28 @@ class SignIn: UIViewController {
         
         Email.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20).isActive = true
         CreateNewAccount.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        handleTextField()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "blur-wallpapers-55342-6592718"))
-        
         navigationController?.navigationBar.isHidden = true
-        
         SetupViews()
-        
-        
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if Auth.auth().currentUser != nil {
+            let vc = TabSwitcher()
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
     
+    func alertMessage(name: String) -> Void {
+        let alert = UIAlertController(title: "Alert", message: name, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 

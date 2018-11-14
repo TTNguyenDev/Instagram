@@ -25,6 +25,8 @@
 		B55136282198714500205209 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55136272198714500205209 /* Photos.swift */; };
 		B551362A2198715300205209 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55136292198715300205209 /* Notification.swift */; };
 		B551362C2198715B00205209 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551362B2198715B00205209 /* Profile.swift */; };
+		B59EDEFD219C629800FF01E3 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59EDEFC219C629800FF01E3 /* FirebaseService.swift */; };
+		B59EDEFF219C697B00FF01E3 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59EDEFE219C697B00FF01E3 /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		B55136272198714500205209 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		B55136292198715300205209 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		B551362B2198715B00205209 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		B59EDEFC219C629800FF01E3 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		B59EDEFE219C697B00FF01E3 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		E87EB47EF4DFCC70108FC170 /* Pods-InstargramUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstargramUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstargramUITests/Pods-InstargramUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F0C8B5BB9259DBD9AF384B63 /* Pods-Instargram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instargram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Instargram/Pods-Instargram.release.xcconfig"; sourceTree = "<group>"; };
 		FD1154C2802F4B6750C5B3E7 /* Pods_Instargram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instargram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,13 +158,12 @@
 		B55135EB219828CD00205209 /* Instargram */ = {
 			isa = PBXGroup;
 			children = (
-				B55136222198711400205209 /* Pages */,
 				B55135EC219828CD00205209 /* AppDelegate.swift */,
-				B55135EE219828CD00205209 /* SignIn.swift */,
-				B551361C21984DAC00205209 /* SignUp.swift */,
-				B551361E21985CBA00205209 /* TabSwitcher.swift */,
+				B59EDF01219C69E700FF01E3 /* DataBase */,
+				B55136222198711400205209 /* Pages */,
+				B59EDF03219C6A0D00FF01E3 /* Auth */,
+				B59EDF02219C69FC00FF01E3 /* Extension */,
 				B55135F8219828CE00205209 /* Info.plist */,
-				B551361A21983FDE00205209 /* Extension.swift */,
 				B544719D21998B02003612D0 /* Assets.xcassets */,
 			);
 			path = Instargram;
@@ -188,6 +191,7 @@
 		B55136222198711400205209 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				B551361E21985CBA00205209 /* TabSwitcher.swift */,
 				B55136232198712900205209 /* Home.swift */,
 				B55136252198713A00205209 /* Discover.swift */,
 				B55136272198714500205209 /* Photos.swift */,
@@ -195,6 +199,32 @@
 				B551362B2198715B00205209 /* Profile.swift */,
 			);
 			path = Pages;
+			sourceTree = "<group>";
+		};
+		B59EDF01219C69E700FF01E3 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				B59EDEFC219C629800FF01E3 /* FirebaseService.swift */,
+				B59EDEFE219C697B00FF01E3 /* Config.swift */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		B59EDF02219C69FC00FF01E3 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B551361A21983FDE00205209 /* Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		B59EDF03219C6A0D00FF01E3 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				B55135EE219828CD00205209 /* SignIn.swift */,
+				B551361C21984DAC00205209 /* SignUp.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,6 +435,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Instargram/Pods-Instargram-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -414,6 +445,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -431,8 +463,10 @@
 			files = (
 				B551361B21983FDE00205209 /* Extension.swift in Sources */,
 				B551362C2198715B00205209 /* Profile.swift in Sources */,
+				B59EDEFD219C629800FF01E3 /* FirebaseService.swift in Sources */,
 				B551361D21984DAC00205209 /* SignUp.swift in Sources */,
 				B551362A2198715300205209 /* Notification.swift in Sources */,
+				B59EDEFF219C697B00FF01E3 /* Config.swift in Sources */,
 				B55135EF219828CD00205209 /* SignIn.swift in Sources */,
 				B551361F21985CBA00205209 /* TabSwitcher.swift in Sources */,
 				B55136282198714500205209 /* Photos.swift in Sources */,

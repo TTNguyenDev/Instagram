@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let homeController = SignIn()
         window?.rootViewController = UINavigationController(rootViewController: homeController)
+        window?.backgroundColor = .white
         
         FirebaseApp.configure()
         // Override point for customization after application launch.

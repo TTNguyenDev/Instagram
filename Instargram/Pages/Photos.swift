@@ -14,7 +14,4 @@ class Photos: UIViewController {
         super.viewDidLoad()
 
     }
-    
-
-
 }

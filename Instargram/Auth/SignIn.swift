@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import SVProgressHUD
 
 class SignIn: UIViewController {
     
@@ -48,7 +49,7 @@ class SignIn: UIViewController {
         label.text = "INSTAGRAM"
         label.textColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
         label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 35)
+        label.font = UIFont.boldSystemFont(ofSize: 40)
         return label
     }()
     
@@ -67,15 +68,14 @@ class SignIn: UIViewController {
     }
     
     @objc fileprivate func signInHandle() {
-        Auth.auth().signIn(withEmail: Email.text!, password: Password.text!) { (user, error) in
-            if error != nil {
-                print(error!.localizedDescription)
-                self.alertMessage(name: "Login Failed.")
-                return
-            }
+        SVProgressHUD.show()
+        FirebaseService.signIn(email: Email.text!, password: Password.text!, onFailed: { error in
+            SVProgressHUD.showError(withStatus: error)
+        }, onSuccess: {
             let vc = TabSwitcher()
             self.present(vc, animated: true, completion: nil)
-        }
+            SVProgressHUD.dismiss()
+        })
     }
     
     @objc fileprivate func handleTextFieldDidChanged() {
@@ -104,7 +104,7 @@ class SignIn: UIViewController {
         view.addConstraintsWithForMat(format: "H:|-20-[v0]-20-|", views: SignInButton)
         view.addConstraintsWithForMat(format: "H:|-20-[v0]-20-|", views: Name)
         
-        view.addConstraintsWithForMat(format: "V:[v3(50)]-25-[v0(30)]-20-[v1(30)]-20-[v2(40)]-20-[v4]", views: Email, Password, SignInButton, Name, CreateNewAccount)
+        view.addConstraintsWithForMat(format: "V:[v3(50)]-30-[v0(30)]-20-[v1(30)]-20-[v2(40)]-20-[v4]", views: Email, Password, SignInButton, Name, CreateNewAccount)
         
         Email.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20).isActive = true
         CreateNewAccount.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -124,12 +124,6 @@ class SignIn: UIViewController {
             let vc = TabSwitcher()
             self.present(vc, animated: true, completion: nil)
         }
-    }
-    
-    func alertMessage(name: String) -> Void {
-        let alert = UIAlertController(title: "Alert", message: name, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
     }
 }
 

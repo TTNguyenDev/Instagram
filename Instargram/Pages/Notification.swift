@@ -14,6 +14,4 @@ class Notification: UIViewController {
         super.viewDidLoad()
 
     }
-    
-
 }

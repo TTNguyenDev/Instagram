@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
+import SVProgressHUD
 
 class SignUp: UIViewController {
     
@@ -81,7 +82,7 @@ class SignUp: UIViewController {
         let uid = Auth.auth().currentUser?.uid
         
         //Upload Profile image
-        let storageRef = Storage.storage().reference(forURL: "gs://instagramclone-d44f3.appspot.com").child("profile_image").child(uid!)
+        let storageRef = Storage.storage().reference(forURL: Config.STORAGE_ROOT_REF).child("profile_image").child(uid!)
         
         let metaDataForImage = StorageMetadata()
         metaDataForImage.contentType = "image/jpeg"
@@ -114,64 +115,65 @@ class SignUp: UIViewController {
     }
     
     @objc fileprivate func signUpHandle() {
-        Auth.auth().createUser(withEmail: Email.text!, password: Password.text!) { (user, error) in
-            if error != nil {
-                print(error!.localizedDescription)
-                return
-            }
+        SVProgressHUD.show()
+        FirebaseService.signUp(email: Email.text!, password: Password.text!, onFailed: {error in
+            SVProgressHUD.showError(withStatus: error)
+        }, onSuccess: {
+            SVProgressHUD.dismiss()
             self.saveDataBase()
-        }
-        let vc = TabSwitcher()
-        self.present(vc, animated: true, completion: nil)
-}
-
-@objc fileprivate func handleTextFieldDidChanged() {
-    guard let username = UserName.text, !username.isEmpty, let email = Email.text, !email.isEmpty, let password = Password.text, !password.isEmpty, ProfileImageName.image != #imageLiteral(resourceName: "icons8-user-male-480") else {
-        SignUpButton.isEnabled = false
-        return
+            let vc = TabSwitcher()
+            self.present(vc, animated: true, completion: nil)
+            
+        })
     }
-    SignUpButton.setTitleColor(#colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1), for: .normal)
-    SignUpButton.isEnabled = true
-}
-
-fileprivate func handleTextField() {
-    UserName.addTarget(self, action: #selector(handleTextFieldDidChanged), for: .editingChanged)
-    Email.addTarget(self, action: #selector(handleTextFieldDidChanged), for: .editingChanged)
-    Password.addTarget(self, action: #selector(handleTextFieldDidChanged), for: .editingChanged)
-}
-
-fileprivate func SetupViews() {
-    view.addSubview(Email)
-    view.addSubview(Password)
-    view.addSubview(SignUpButton)
-    view.addSubview(Name)
-    view.addSubview(ProfileImageName)
-    view.addSubview(UserName)
     
-    view.addConstraintsWithForMat(format: "H:|-20-[v0]-20-|", views: Email)
-    view.addConstraintsWithForMat(format: "H:|-20-[v0]-20-|", views: Password)
-    view.addConstraintsWithForMat(format: "H:|-20-[v0]-20-|", views: SignUpButton)
-    view.addConstraintsWithForMat(format: "H:|-20-[v0]-20-|", views: Name)
-    view.addConstraintsWithForMat(format: "H:|-20-[v0]-20-|", views: UserName)
-    view.addConstraintsWithForMat(format: "H:[v0(80)]", views: ProfileImageName)
+    @objc fileprivate func handleTextFieldDidChanged() {
+        guard let username = UserName.text, !username.isEmpty, let email = Email.text, !email.isEmpty, let password = Password.text, !password.isEmpty, ProfileImageName.image != #imageLiteral(resourceName: "icons8-user-male-480") else {
+            SignUpButton.isEnabled = false
+            return
+        }
+        SignUpButton.setTitleColor(#colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1), for: .normal)
+        SignUpButton.isEnabled = true
+    }
     
-    view.addConstraintsWithForMat(format: "V:[v3(50)]-25-[v5(80)]-25-[v4(30)]-20-[v0(30)]-20-[v1(30)]-20-[v2(40)]", views: Email, Password, SignUpButton, Name, UserName, ProfileImageName)
+    fileprivate func handleTextField() {
+        UserName.addTarget(self, action: #selector(handleTextFieldDidChanged), for: .editingChanged)
+        Email.addTarget(self, action: #selector(handleTextFieldDidChanged), for: .editingChanged)
+        Password.addTarget(self, action: #selector(handleTextFieldDidChanged), for: .editingChanged)
+    }
     
-    Email.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20).isActive = true
-    ProfileImageName.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    fileprivate func SetupViews() {
+        view.addSubview(Email)
+        view.addSubview(Password)
+        view.addSubview(SignUpButton)
+        view.addSubview(Name)
+        view.addSubview(ProfileImageName)
+        view.addSubview(UserName)
+        
+        view.addConstraintsWithForMat(format: "H:|-20-[v0]-20-|", views: Email)
+        view.addConstraintsWithForMat(format: "H:|-20-[v0]-20-|", views: Password)
+        view.addConstraintsWithForMat(format: "H:|-20-[v0]-20-|", views: SignUpButton)
+        view.addConstraintsWithForMat(format: "H:|-20-[v0]-20-|", views: Name)
+        view.addConstraintsWithForMat(format: "H:|-20-[v0]-20-|", views: UserName)
+        view.addConstraintsWithForMat(format: "H:[v0(80)]", views: ProfileImageName)
+        
+        view.addConstraintsWithForMat(format: "V:[v3(50)]-25-[v5(80)]-25-[v4(30)]-20-[v0(30)]-20-[v1(30)]-20-[v2(40)]", views: Email, Password, SignUpButton, Name, UserName, ProfileImageName)
+        
+        Email.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20).isActive = true
+        ProfileImageName.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(chooseProfileImage))
+        ProfileImageName.addGestureRecognizer(tapGesture)
+        ProfileImageName.isUserInteractionEnabled = true
+        handleTextField()
+    }
     
-    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(chooseProfileImage))
-    ProfileImageName.addGestureRecognizer(tapGesture)
-    ProfileImageName.isUserInteractionEnabled = true
-    handleTextField()
-}
-
-override func viewDidLoad() {
-    super.viewDidLoad()
-    self.view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "blur-wallpapers-55342-6592718"))
-    navigationController?.navigationBar.isHidden = true
-    SetupViews()
-}
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "blur-wallpapers-55342-6592718"))
+        navigationController?.navigationBar.isHidden = true
+        SetupViews()
+    }
 }
 
 extension SignUp: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -182,6 +184,11 @@ extension SignUp: UIImagePickerControllerDelegate, UINavigationControllerDelegat
             ProfileImageName.image = image
         }
         dismiss(animated: true, completion: nil)
-        
+    }
+    
+    func alertMessage(name: String) -> Void {
+        let alert = UIAlertController(title: "Alert", message: name, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

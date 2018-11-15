@@ -93,6 +93,7 @@ class SignUp: UIViewController {
         if let profileImg = self.selectedImage {
             storageRef.putData(profileImg.jpegData(compressionQuality: 0.1)!, metadata: metaDataForImage) { (metaData, error) in
                 if error != nil {
+                    SVProgressHUD.showError(withStatus: error!.localizedDescription)
                     return
                 }
                 
@@ -187,11 +188,5 @@ extension SignUp: UIImagePickerControllerDelegate, UINavigationControllerDelegat
             ProfileImageName.image = image
         }
         dismiss(animated: true, completion: nil)
-    }
-    
-    func alertMessage(name: String) -> Void {
-        let alert = UIAlertController(title: "Alert", message: name, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
     }
 }

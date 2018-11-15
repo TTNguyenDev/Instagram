@@ -77,6 +77,9 @@ class SignUp: UIViewController {
         return label
     }()
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     
     fileprivate func saveDataBase() {
         let uid = Auth.auth().currentUser?.uid

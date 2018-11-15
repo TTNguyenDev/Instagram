@@ -13,35 +13,35 @@ class TabSwitcher: UIViewController, UITabBarControllerDelegate {
     
     let home: Home = {
         let home = Home()
-        home.tabBarItem.image = #imageLiteral(resourceName: "icons8-home-page-24")
+        home.tabBarItem.image = #imageLiteral(resourceName: "Home_Selected")
         home.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
         return home
     }()
     
     let search: Discover = {
         let search = Discover()
-        search.tabBarItem.image = #imageLiteral(resourceName: "icons8-search-24")
+        search.tabBarItem.image = #imageLiteral(resourceName: "Search_Selected")
         search.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
         return search
     }()
     
     let photos: Photos = {
         let photos = Photos()
-        photos.tabBarItem.image = #imageLiteral(resourceName: "icons8-instagram-old-26")
+        photos.tabBarItem.image = #imageLiteral(resourceName: "Photo")
         photos.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
         return photos
     }()
     
     let notification: Notification = {
         let notification = Notification()
-        notification.tabBarItem.image = #imageLiteral(resourceName: "icons8-heart-outline-24")
+        notification.tabBarItem.image = #imageLiteral(resourceName: "Activity_Selected")
         notification.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
         return notification
     }()
     
     let account: Profile = {
         let account = Profile()
-        account.tabBarItem.image = #imageLiteral(resourceName: "icons8-user-24")
+        account.tabBarItem.image = #imageLiteral(resourceName: "Profile_Selected")
         account.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
         return account
     }()

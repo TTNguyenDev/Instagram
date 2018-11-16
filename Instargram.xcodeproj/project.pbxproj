@@ -27,6 +27,7 @@
 		B551362C2198715B00205209 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551362B2198715B00205209 /* Profile.swift */; };
 		B59EDEFD219C629800FF01E3 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59EDEFC219C629800FF01E3 /* FirebaseService.swift */; };
 		B59EDEFF219C697B00FF01E3 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59EDEFE219C697B00FF01E3 /* Config.swift */; };
+		B5D869F5219EF34400C92BA4 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D869F4219EF34400C92BA4 /* Posts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		B551362B2198715B00205209 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		B59EDEFC219C629800FF01E3 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		B59EDEFE219C697B00FF01E3 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		B5D869F4219EF34400C92BA4 /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 		E87EB47EF4DFCC70108FC170 /* Pods-InstargramUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstargramUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstargramUITests/Pods-InstargramUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F0C8B5BB9259DBD9AF384B63 /* Pods-Instargram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instargram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Instargram/Pods-Instargram.release.xcconfig"; sourceTree = "<group>"; };
 		FD1154C2802F4B6750C5B3E7 /* Pods_Instargram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instargram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +160,7 @@
 		B55135EB219828CD00205209 /* Instargram */ = {
 			isa = PBXGroup;
 			children = (
+				B5D869F3219EF32C00C92BA4 /* Model */,
 				B55135EC219828CD00205209 /* AppDelegate.swift */,
 				B59EDF01219C69E700FF01E3 /* DataBase */,
 				B55136222198711400205209 /* Pages */,
@@ -225,6 +228,14 @@
 				B551361C21984DAC00205209 /* SignUp.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		B5D869F3219EF32C00C92BA4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B5D869F4219EF34400C92BA4 /* Posts.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -466,6 +477,7 @@
 				B59EDEFD219C629800FF01E3 /* FirebaseService.swift in Sources */,
 				B551361D21984DAC00205209 /* SignUp.swift in Sources */,
 				B551362A2198715300205209 /* Notification.swift in Sources */,
+				B5D869F5219EF34400C92BA4 /* Posts.swift in Sources */,
 				B59EDEFF219C697B00FF01E3 /* Config.swift in Sources */,
 				B55135EF219828CD00205209 /* SignIn.swift in Sources */,
 				B551361F21985CBA00205209 /* TabSwitcher.swift in Sources */,

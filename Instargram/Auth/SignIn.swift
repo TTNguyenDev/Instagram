@@ -124,6 +124,7 @@ class SignIn: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if Auth.auth().currentUser != nil {
             let vc = TabSwitcher()
             self.present(vc, animated: true, completion: nil)

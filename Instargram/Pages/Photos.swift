@@ -44,13 +44,13 @@ class Photos: UIViewController {
     let shareButton: UIButton = {
         let button = UIButton()
         button.setTitle("Share", for: .normal)
-        button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
         button.addTarget(self, action: #selector(shareHandle), for: .touchUpInside)
         return button
     }()
     
     fileprivate func saveDataBase() {
+        SVProgressHUD.show()
         let photoIdString = NSUUID().uuidString
         let storageRef = Storage.storage().reference(forURL: Config.STORAGE_ROOT_REF).child("posts").child(photoIdString)
         let metaDataForImage = StorageMetadata()
@@ -73,12 +73,13 @@ class Photos: UIViewController {
                     let postReference = ref.child("posts")
                     let newPostId = postReference.childByAutoId().key
                     let newPostReference = postReference.child(newPostId!)
-                    newPostReference.setValue(["photoUrl": profileImageUrl], withCompletionBlock: { (error, ref) in
+                    newPostReference.setValue(["photoUrl": profileImageUrl, "caption": self.status.text!], withCompletionBlock: { (error, ref) in
                         if error != nil {
                             SVProgressHUD.showError(withStatus: error!.localizedDescription)
                             return
                         }
                         SVProgressHUD.showSuccess(withStatus: "Success")
+                        self.clean()
                     })
                 })
             }
@@ -95,16 +96,54 @@ class Photos: UIViewController {
         present(pickerController, animated: true, completion: nil)
     }
     
+    @objc fileprivate func cancelHandle() {
+        clean()
+    }
+    
     fileprivate func setupTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSelectImage))
         imagePicker.addGestureRecognizer(tapGesture)
         imagePicker.isUserInteractionEnabled = true
     }
     
+    fileprivate func clean() {
+        imagePicker.image = #imageLiteral(resourceName: "Placeholder-image")
+        selectedImage = nil
+        status.text = ""
+        handlePost()
+    }
+    
+    fileprivate func handlePost() {
+        if selectedImage != nil {
+            shareButton.isEnabled = true
+            self.navigationItem.leftBarButtonItem!.isEnabled = true
+            shareButton.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
+        } else {
+            shareButton.isEnabled = false
+            self.navigationItem.leftBarButtonItem!.isEnabled = false
+            shareButton.setTitleColor(#colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), for: .normal)
+        }
+    }
+    
+    fileprivate func setupNavigationItem() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Remove", style: .done, target: self, action: #selector(cancelHandle))
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        setupNavigationItem()
         setupTapGesture()
+        
+        
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        handlePost()
     }
     
     fileprivate func setupViews() {
@@ -117,11 +156,11 @@ class Photos: UIViewController {
         view.addConstraintsWithForMat(format: "V:[v0(50)]-95-|", views: shareButton)
         
         statusView.addConstraintsWithForMat(format: "H:|-20-[v0(120)]-20-[v1]-20-|", views: imagePicker, status)
-        statusView.addConstraintsWithForMat(format: "V:|-30-[v0]-30-|", views: imagePicker)
-        statusView.addConstraintsWithForMat(format: "V:|-30-[v0]-30-|", views: status)
+        statusView.addConstraintsWithForMat(format: "V:|-20-[v0]-20-|", views: imagePicker)
+        statusView.addConstraintsWithForMat(format: "V:|-20-[v0]-20-|", views: status)
         
         view.addConstraintsWithForMat(format: "H:|-8-[v0]-8-|", views: statusView)
-        view.addConstraintsWithForMat(format: "V:|-100-[v0(\(view.frame.height/5))]", views: statusView)
+        view.addConstraintsWithForMat(format: "V:|-100-[v0(\(view.frame.height/6))]", views: statusView)
     }
 }
 

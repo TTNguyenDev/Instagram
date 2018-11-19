@@ -8,6 +8,8 @@
 
 import UIKit
 import SDWebImage
+import FirebaseDatabase
+import FirebaseAuth
 
 class PostCell: BaseCell {
     
@@ -16,10 +18,27 @@ class PostCell: BaseCell {
             captionForPost.text = post?.caption
             if let photoUrlString = post?.imageUrl {
                 let photoUrl = URL(string: photoUrlString)
-                imagePost.sd_setImage(with: photoUrl)
+                imagePost.sd_setImage(with: photoUrl, placeholderImage: #imageLiteral(resourceName: "Placeholder-image"))
+            }
+            setupUserInfor()
+        }
+    }
+    
+    fileprivate func setupUserInfor() {
+        if let uid = Auth.auth().currentUser?.uid {
+            Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapShot) in
+                  if let dictionary = snapShot.value as? NSDictionary {
+                    let user = Users.transformUser(dictionary: dictionary)
+                    self.profileName.text = user.username
+                    if let photoUrlString = user.profile_image {
+                        let photoUrl = URL(string: photoUrlString)
+                        self.profileImage.sd_setImage(with: photoUrl, placeholderImage: #imageLiteral(resourceName: "Profile_Selected"))
+                    }
+                }
             }
         }
     }
+    
 
     let profileImage: UIImageView = {
         let image = UIImageView()
@@ -117,10 +136,5 @@ class PostCell: BaseCell {
         
         share.topAnchor.constraint(equalTo: imagePost.bottomAnchor, constant: 12).isActive = true
         share.bottomAnchor.constraint(equalTo: countLike.topAnchor, constant: -12).isActive = true
-        
     }
-    
-    
-    
-    
 }

@@ -25,6 +25,7 @@
 		B55136282198714500205209 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55136272198714500205209 /* Photos.swift */; };
 		B551362A2198715300205209 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55136292198715300205209 /* Notification.swift */; };
 		B551362C2198715B00205209 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551362B2198715B00205209 /* Profile.swift */; };
+		B588519321A316600057AFEC /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = B588519221A316600057AFEC /* Users.swift */; };
 		B59EDEFD219C629800FF01E3 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59EDEFC219C629800FF01E3 /* FirebaseService.swift */; };
 		B59EDEFF219C697B00FF01E3 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59EDEFE219C697B00FF01E3 /* Config.swift */; };
 		B5D6AF89219FDA0300BDED46 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D6AF88219FDA0300BDED46 /* PostCell.swift */; };
@@ -77,6 +78,7 @@
 		B55136272198714500205209 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		B55136292198715300205209 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		B551362B2198715B00205209 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		B588519221A316600057AFEC /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		B59EDEFC219C629800FF01E3 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		B59EDEFE219C697B00FF01E3 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B5D6AF88219FDA0300BDED46 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				B5D869F4219EF34400C92BA4 /* Posts.swift */,
+				B588519221A316600057AFEC /* Users.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				B59EDEFD219C629800FF01E3 /* FirebaseService.swift in Sources */,
 				B551361D21984DAC00205209 /* SignUp.swift in Sources */,
 				B551362A2198715300205209 /* Notification.swift in Sources */,
+				B588519321A316600057AFEC /* Users.swift in Sources */,
 				B5D869F5219EF34400C92BA4 /* Posts.swift in Sources */,
 				B59EDEFF219C697B00FF01E3 /* Config.swift in Sources */,
 				B5D6AF89219FDA0300BDED46 /* PostCell.swift in Sources */,

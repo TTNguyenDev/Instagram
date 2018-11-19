@@ -22,28 +22,29 @@ class Home: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
-    
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
-        cell.textLabel?.text = self.posts[indexPath.row].imageUrl
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! PostCell
+        let post = posts[indexPath.row]
+        cell.post = post
         return cell
     }
     
     fileprivate func loadPost() {
         Database.database().reference().child("posts").observe(.childAdded) { (snapShot) in
             if let dictionary = snapShot.value as? NSDictionary {
-                let captionText = dictionary["caption"] as? String
-                let photoUrlString = dictionary["photoUrl"] as? String
-                let post = Posts(captionText: captionText!, imageUrlString: photoUrlString!)
-                self.posts.append(post)
+                let newPost = Posts.transformPostPhoto(dictionary: dictionary)
+                self.posts.append(newPost)
                 self.tableView.reloadData()
             }
         }
     }
     
     fileprivate func setupTableView() {
+        tableView.estimatedRowHeight = 521
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.dataSource = self
-        tableView.register(tableViewCell.self, forCellReuseIdentifier: "cellId")
+        tableView.register(PostCell.self, forCellReuseIdentifier: "cellId")
         
         view.addSubview(tableView)
         view.addConstraintsWithForMat(format: "H:|[v0]|", views: tableView)
@@ -57,7 +58,5 @@ class Home: UIViewController, UITableViewDataSource {
     }
 }
 
-class tableViewCell: UITableViewCell {
-    
-}
+
 

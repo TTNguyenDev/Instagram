@@ -27,6 +27,8 @@
 		B551362C2198715B00205209 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551362B2198715B00205209 /* Profile.swift */; };
 		B59EDEFD219C629800FF01E3 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59EDEFC219C629800FF01E3 /* FirebaseService.swift */; };
 		B59EDEFF219C697B00FF01E3 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59EDEFE219C697B00FF01E3 /* Config.swift */; };
+		B5D6AF89219FDA0300BDED46 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D6AF88219FDA0300BDED46 /* PostCell.swift */; };
+		B5D6AF8B219FDA0E00BDED46 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D6AF8A219FDA0E00BDED46 /* BaseCell.swift */; };
 		B5D869F5219EF34400C92BA4 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D869F4219EF34400C92BA4 /* Posts.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +79,8 @@
 		B551362B2198715B00205209 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		B59EDEFC219C629800FF01E3 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		B59EDEFE219C697B00FF01E3 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		B5D6AF88219FDA0300BDED46 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		B5D6AF8A219FDA0E00BDED46 /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		B5D869F4219EF34400C92BA4 /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 		E87EB47EF4DFCC70108FC170 /* Pods-InstargramUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstargramUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstargramUITests/Pods-InstargramUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F0C8B5BB9259DBD9AF384B63 /* Pods-Instargram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instargram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Instargram/Pods-Instargram.release.xcconfig"; sourceTree = "<group>"; };
@@ -160,8 +164,9 @@
 		B55135EB219828CD00205209 /* Instargram */ = {
 			isa = PBXGroup;
 			children = (
-				B5D869F3219EF32C00C92BA4 /* Model */,
+				B5D6AF87219FD9F300BDED46 /* Cell */,
 				B55135EC219828CD00205209 /* AppDelegate.swift */,
+				B5D869F3219EF32C00C92BA4 /* Model */,
 				B59EDF01219C69E700FF01E3 /* DataBase */,
 				B55136222198711400205209 /* Pages */,
 				B59EDF03219C6A0D00FF01E3 /* Auth */,
@@ -228,6 +233,15 @@
 				B551361C21984DAC00205209 /* SignUp.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		B5D6AF87219FD9F300BDED46 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B5D6AF88219FDA0300BDED46 /* PostCell.swift */,
+				B5D6AF8A219FDA0E00BDED46 /* BaseCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		B5D869F3219EF32C00C92BA4 /* Model */ = {
@@ -446,6 +460,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Instargram/Pods-Instargram-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -456,6 +471,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -479,11 +495,13 @@
 				B551362A2198715300205209 /* Notification.swift in Sources */,
 				B5D869F5219EF34400C92BA4 /* Posts.swift in Sources */,
 				B59EDEFF219C697B00FF01E3 /* Config.swift in Sources */,
+				B5D6AF89219FDA0300BDED46 /* PostCell.swift in Sources */,
 				B55135EF219828CD00205209 /* SignIn.swift in Sources */,
 				B551361F21985CBA00205209 /* TabSwitcher.swift in Sources */,
 				B55136282198714500205209 /* Photos.swift in Sources */,
 				B55136242198712900205209 /* Home.swift in Sources */,
 				B55135ED219828CD00205209 /* AppDelegate.swift in Sources */,
+				B5D6AF8B219FDA0E00BDED46 /* BaseCell.swift in Sources */,
 				B55136262198713A00205209 /* Discover.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

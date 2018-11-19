@@ -9,7 +9,10 @@ target 'Instargram' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
+  pod 'SDWebImage'
 
+  platform :ios, '8.0'
+  use_frameworks!
   # Pods for Instargram
 
   target 'InstargramTests' do

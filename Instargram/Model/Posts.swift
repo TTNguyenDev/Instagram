@@ -9,11 +9,15 @@
 import Foundation
 
 class Posts {
-    var caption: String
-    var imageUrl: String
-    
-    init(captionText: String, imageUrlString: String) {
-        caption = captionText
-        imageUrl = imageUrlString
+    var caption: String?
+    var imageUrl: String?
+}
+
+extension Posts {
+    static func transformPostPhoto(dictionary: NSDictionary) -> Posts {
+        let post = Posts()
+        post.caption = dictionary["caption"] as? String
+        post.imageUrl = dictionary["photoUrl"] as? String
+        return post
     }
 }

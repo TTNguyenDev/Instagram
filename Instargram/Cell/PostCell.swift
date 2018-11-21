@@ -20,29 +20,22 @@ class PostCell: BaseCell {
                 let photoUrl = URL(string: photoUrlString)
                 imagePost.sd_setImage(with: photoUrl, placeholderImage: #imageLiteral(resourceName: "Placeholder-image"))
             }
-            setupUserInfor()
         }
     }
     
-    fileprivate func setupUserInfor() {
-        if let uid = Auth.auth().currentUser?.uid {
-            Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapShot) in
-                  if let dictionary = snapShot.value as? NSDictionary {
-                    let user = Users.transformUser(dictionary: dictionary)
-                    self.profileName.text = user.username
-                    if let photoUrlString = user.profile_image {
-                        let photoUrl = URL(string: photoUrlString)
-                        self.profileImage.sd_setImage(with: photoUrl, placeholderImage: #imageLiteral(resourceName: "Profile_Selected"))
-                    }
-                }
+    var user: Users? {
+        didSet {
+            profileName.text = user?.username
+            if let photoUrlString = user?.profile_image {
+                let photoUrl = URL(string: photoUrlString)
+                self.profileImage.sd_setImage(with: photoUrl, placeholderImage: #imageLiteral(resourceName: "Profile_Selected"))
             }
         }
     }
     
-
     let profileImage: UIImageView = {
         let image = UIImageView()
-        image.image = #imageLiteral(resourceName: "blur-wallpapers-55342-6592718")
+        image.image = #imageLiteral(resourceName: "Profile_Selected")
         image.contentMode = .scaleToFill
         image.layer.cornerRadius = 17
         image.clipsToBounds = true
@@ -51,7 +44,7 @@ class PostCell: BaseCell {
     
     let profileName: UILabel = {
         let name = UILabel()
-        name.text = "Nguyễn Trọng Triết"
+        name.text = ""
         name.font = UIFont.boldSystemFont(ofSize: 12)
         return name
     }()
@@ -108,6 +101,10 @@ class PostCell: BaseCell {
         return label
     }()
     
+    @objc fileprivate func commentHandle() {
+        
+    }
+    
     override func setupViews() {
         addSubview(profileImage)
         addSubview(profileName)
@@ -136,5 +133,9 @@ class PostCell: BaseCell {
         
         share.topAnchor.constraint(equalTo: imagePost.bottomAnchor, constant: 12).isActive = true
         share.bottomAnchor.constraint(equalTo: countLike.topAnchor, constant: -12).isActive = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(commentHandle))
+        comment.addGestureRecognizer(tapGesture)
+        comment.isUserInteractionEnabled = true
     }
 }

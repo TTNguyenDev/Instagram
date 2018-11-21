@@ -11,6 +11,8 @@
 		5771F24C2B4606AE8D398B42 /* Pods_InstargramTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55874A0F9F2F62F49D11C261 /* Pods_InstargramTests.framework */; };
 		7D578F4399F0118AAEFCF08A /* Pods_InstargramUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F94280D7295AED7B1F85572 /* Pods_InstargramUITests.framework */; };
 		B522DDFC21995981006792BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B522DDFB21995981006792BD /* GoogleService-Info.plist */; };
+		B539C66C21A3FCD800FA1202 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B539C66B21A3FCD800FA1202 /* CommentCell.swift */; };
+		B539C67221A448D000FA1202 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B539C67121A448D000FA1202 /* Comments.swift */; };
 		B544719C21996061003612D0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B544719B21996061003612D0 /* GoogleService-Info.plist */; };
 		B544719E21998B03003612D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B544719D21998B02003612D0 /* Assets.xcassets */; };
 		B55135ED219828CD00205209 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55135EC219828CD00205209 /* AppDelegate.swift */; };
@@ -28,6 +30,7 @@
 		B588519321A316600057AFEC /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = B588519221A316600057AFEC /* Users.swift */; };
 		B59EDEFD219C629800FF01E3 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59EDEFC219C629800FF01E3 /* FirebaseService.swift */; };
 		B59EDEFF219C697B00FF01E3 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59EDEFE219C697B00FF01E3 /* Config.swift */; };
+		B5A806B721A3EF17000854F7 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A806B621A3EF17000854F7 /* Comment.swift */; };
 		B5D6AF89219FDA0300BDED46 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D6AF88219FDA0300BDED46 /* PostCell.swift */; };
 		B5D6AF8B219FDA0E00BDED46 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D6AF8A219FDA0E00BDED46 /* BaseCell.swift */; };
 		B5D869F5219EF34400C92BA4 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D869F4219EF34400C92BA4 /* Posts.swift */; };
@@ -58,6 +61,8 @@
 		53C842AE079FF04F845FBD14 /* Pods-Instargram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instargram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Instargram/Pods-Instargram.debug.xcconfig"; sourceTree = "<group>"; };
 		55874A0F9F2F62F49D11C261 /* Pods_InstargramTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstargramTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B522DDFB21995981006792BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B539C66B21A3FCD800FA1202 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		B539C67121A448D000FA1202 /* Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
 		B544719B21996061003612D0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B544719D21998B02003612D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B55135E9219828CD00205209 /* Instargram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instargram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +86,7 @@
 		B588519221A316600057AFEC /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		B59EDEFC219C629800FF01E3 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		B59EDEFE219C697B00FF01E3 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		B5A806B621A3EF17000854F7 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		B5D6AF88219FDA0300BDED46 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		B5D6AF8A219FDA0E00BDED46 /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		B5D869F4219EF34400C92BA4 /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
@@ -166,8 +172,8 @@
 		B55135EB219828CD00205209 /* Instargram */ = {
 			isa = PBXGroup;
 			children = (
-				B5D6AF87219FD9F300BDED46 /* Cell */,
 				B55135EC219828CD00205209 /* AppDelegate.swift */,
+				B5D6AF87219FD9F300BDED46 /* Cell */,
 				B5D869F3219EF32C00C92BA4 /* Model */,
 				B59EDF01219C69E700FF01E3 /* DataBase */,
 				B55136222198711400205209 /* Pages */,
@@ -204,6 +210,7 @@
 				B551361E21985CBA00205209 /* TabSwitcher.swift */,
 				B55136232198712900205209 /* Home.swift */,
 				B55136252198713A00205209 /* Discover.swift */,
+				B5A806B621A3EF17000854F7 /* Comment.swift */,
 				B55136272198714500205209 /* Photos.swift */,
 				B55136292198715300205209 /* Notification.swift */,
 				B551362B2198715B00205209 /* Profile.swift */,
@@ -242,6 +249,7 @@
 			children = (
 				B5D6AF88219FDA0300BDED46 /* PostCell.swift */,
 				B5D6AF8A219FDA0E00BDED46 /* BaseCell.swift */,
+				B539C66B21A3FCD800FA1202 /* CommentCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -250,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				B5D869F4219EF34400C92BA4 /* Posts.swift */,
+				B539C67121A448D000FA1202 /* Comments.swift */,
 				B588519221A316600057AFEC /* Users.swift */,
 			);
 			path = Model;
@@ -327,6 +336,7 @@
 				TargetAttributes = {
 					B55135E8219828CD00205209 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					B55135FC219828CF00205209 = {
 						CreatedOnToolsVersion = 10.1;
@@ -496,7 +506,9 @@
 				B59EDEFD219C629800FF01E3 /* FirebaseService.swift in Sources */,
 				B551361D21984DAC00205209 /* SignUp.swift in Sources */,
 				B551362A2198715300205209 /* Notification.swift in Sources */,
+				B5A806B721A3EF17000854F7 /* Comment.swift in Sources */,
 				B588519321A316600057AFEC /* Users.swift in Sources */,
+				B539C66C21A3FCD800FA1202 /* CommentCell.swift in Sources */,
 				B5D869F5219EF34400C92BA4 /* Posts.swift in Sources */,
 				B59EDEFF219C697B00FF01E3 /* Config.swift in Sources */,
 				B5D6AF89219FDA0300BDED46 /* PostCell.swift in Sources */,
@@ -505,6 +517,7 @@
 				B55136282198714500205209 /* Photos.swift in Sources */,
 				B55136242198712900205209 /* Home.swift in Sources */,
 				B55135ED219828CD00205209 /* AppDelegate.swift in Sources */,
+				B539C67221A448D000FA1202 /* Comments.swift in Sources */,
 				B5D6AF8B219FDA0E00BDED46 /* BaseCell.swift in Sources */,
 				B55136262198713A00205209 /* Discover.swift in Sources */,
 			);
@@ -663,6 +676,7 @@
 			baseConfigurationReference = 53C842AE079FF04F845FBD14 /* Pods-Instargram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H4NA3RYS6C;
 				INFOPLIST_FILE = Instargram/Info.plist;
@@ -672,6 +686,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = appstore.Instargram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -682,6 +697,7 @@
 			baseConfigurationReference = F0C8B5BB9259DBD9AF384B63 /* Pods-Instargram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H4NA3RYS6C;
 				INFOPLIST_FILE = Instargram/Info.plist;
